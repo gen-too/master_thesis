@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS job_metrics
+(
+  job_id SERIAL NOT NULL PRIMARY KEY,
+  threshold DOUBLE precision NOT NULL,
+  data_description TEXT NOT NULL,
+  data_files TEXT[] NOT NULL,
+  execution_time BIGINT NOT NULL,
+  f_measure numeric(5,2) NOT NULL,
+  flink_jid TEXT NOT NULL,
+  iteration INT NOT NULL,
+  job_name TEXT NOT NULL,
+  calculated_matches numeric NOT NULL,
+  candidates BIGINT NOT NULL,
+  hash_families INT,
+  hash_functions INT,
+  total_iterations INT NOT NULL,
+  matches BIGINT NOT NULL,
+  record_tuples BIGINT NOT NULL,
+  records BIGINT NOT NULL,
+  true_matches BIGINT NOT NULL,
+  false_matches BIGINT NOT NULL,
+  pairs_completeness NUMERIC(5,2) NOT NULL,
+  pairs_quality NUMERIC(5,2) NOT NULL,
+  parallelism INT NOT NULL,
+  reduction_rate NUMERIC(5,2) NOT NULL,
+  job_type TEXT NOT NULL,
+  CONSTRAINT unq_flink_id UNIQUE (flink_jid)
+)
